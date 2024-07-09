@@ -5,7 +5,9 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dev.hugeblank.peripherals.chatmodem.ChatModemBlockEntity;
 import dev.hugeblank.peripherals.chatmodem.Constants;
 import dev.hugeblank.peripherals.chatmodem.IChatCatcher;
+import dev.hugeblank.peripherals.chatmodem.block.RangedChatModemBlock;
 import dev.hugeblank.util.BooleanRef;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -72,6 +74,10 @@ public class RangedChatModemState extends AbstractModemState implements IChatCat
         if (invokeEvent) blockEntity.markDirty();
     }
 
+    @Override
+    public BlockState updateBlockState(BlockState state) {
+        return state.with(RangedChatModemBlock.ON,isEnabled);
+    }
 
     public void handleChatEvents(String message, ServerPlayerEntity player, BooleanRef shouldCancel) {
         String username = player.getEntityName();
