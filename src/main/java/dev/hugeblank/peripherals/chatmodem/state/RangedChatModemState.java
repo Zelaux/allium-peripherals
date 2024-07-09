@@ -76,7 +76,7 @@ public class RangedChatModemState extends AbstractModemState implements IChatCat
 
     @Override
     public BlockState updateBlockState(BlockState state) {
-        return state.with(RangedChatModemBlock.ON,isEnabled);
+        return state.with(RangedChatModemBlock.ON, isEnabled);
     }
 
     public void handleChatEvents(String message, ServerPlayerEntity player, BooleanRef shouldCancel) {
@@ -144,12 +144,12 @@ public class RangedChatModemState extends AbstractModemState implements IChatCat
 
     @Override
     public void readNbt(NbtCompound nbt, BlockEntity entity) {
-
+        isEnabled = nbt.contains("enabled") && nbt.getBoolean("enabled");
     }
 
     @Override
     public void writeNbt(NbtCompound nbt) {
-
+        nbt.putBoolean("enabled", isEnabled);
     }
 
 
