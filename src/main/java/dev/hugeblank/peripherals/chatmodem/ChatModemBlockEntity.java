@@ -2,7 +2,7 @@ package dev.hugeblank.peripherals.chatmodem;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralTile;
-import dev.hugeblank.peripherals.chatmodem.block.ChatModemBlock;
+import dev.hugeblank.peripherals.chatmodem.block.CalibratedChatModemBlock;
 import dev.hugeblank.peripherals.chatmodem.block.IChatModemBlock;
 import dev.hugeblank.peripherals.chatmodem.state.IModemState;
 import net.minecraft.block.BlockState;
@@ -77,7 +77,7 @@ public class ChatModemBlockEntity extends BlockEntity implements IPeripheralTile
         if (hasModemDirection) return;
 
         hasModemDirection = true;
-        modemDirection = getCachedState().get(ChatModemBlock.FACING);
+        modemDirection = getCachedState().get(CalibratedChatModemBlock.FACING);
     }
 
     private void updateBlockState() {

@@ -1,7 +1,7 @@
 package dev.hugeblank.peripherals.chatmodem;
 
 import dan200.computercraft.api.lua.MethodResult;
-import dev.hugeblank.peripherals.chatmodem.state.BoundableChatModemState;
+import dev.hugeblank.peripherals.chatmodem.state.CalibratedChatModemState;
 import dev.hugeblank.peripherals.chatmodem.state.RangedChatModemState;
 
 import java.util.function.Supplier;
@@ -36,7 +36,7 @@ public interface Constants {
             createRanged("getListenRange", (state, arguments) -> state.getListenRange()),
             createRanged("getMaxListenRange", (state, arguments) -> state.getMaxListenRange()),
         };
-        PeripheralMethod<?>[] simpleChatMethdos = {
+        PeripheralMethod<?>[] calibratedChatMethdos = {
             //(string)
             createBoundable("capture", (state, arguments) ->
                 MethodResult.of(state.capture(arguments.getString(0)))
@@ -59,8 +59,8 @@ public interface Constants {
             }),
         };
         PeripheralMethod<?>[] creativeMethods = staticInit(() -> {
-            PeripheralMethod<?>[] peripheralMethods = new PeripheralMethod[simpleChatMethdos.length - 1];
-            System.arraycopy(simpleChatMethdos, 0, peripheralMethods, 0, peripheralMethods.length);
+            PeripheralMethod<?>[] peripheralMethods = new PeripheralMethod[calibratedChatMethdos.length - 1];
+            System.arraycopy(calibratedChatMethdos, 0, peripheralMethods, 0, peripheralMethods.length);
             return peripheralMethods;
         });
 
@@ -68,7 +68,7 @@ public interface Constants {
             return create(name,body);
         }
 
-        static PeripheralMethod<BoundableChatModemState> createBoundable(String name, PeripheralMethod.Body<BoundableChatModemState> body) {
+        static PeripheralMethod<CalibratedChatModemState> createBoundable(String name, PeripheralMethod.Body<CalibratedChatModemState> body) {
             return create(name,body);
         }
     }

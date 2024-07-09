@@ -1,7 +1,7 @@
 package dev.hugeblank;
 
 import org.slf4j.Logger;
-import dev.hugeblank.peripherals.chatmodem.block.ChatModemBlock;
+import dev.hugeblank.peripherals.chatmodem.block.CalibratedChatModemBlock;
 import dev.hugeblank.peripherals.chatmodem.block.RangedChatModemBlock;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -31,7 +31,7 @@ public class Allium implements ModInitializer {
     }
 
     public interface Blocks {
-        ChatModemBlock CHAT_MODEM = new ChatModemBlock(
+        CalibratedChatModemBlock CHAT_MODEM = new CalibratedChatModemBlock(
             FabricBlockSettings.of(Material.STONE).hardness(2)
         );
 
@@ -41,7 +41,7 @@ public class Allium implements ModInitializer {
             .listenRange(Box.of(Vec3d.ZERO, CHAT_MODEM_MAX_RANGE * 2 + 1, CHAT_MODEM_MAX_RANGE * 2 + 1, CHAT_MODEM_MAX_RANGE * 2 + 1))
             .sendRange(Box.of(Vec3d.ZERO, CHAT_MODEM_MAX_RANGE * 2 + 1, CHAT_MODEM_MAX_RANGE * 2 + 1, CHAT_MODEM_MAX_RANGE * 2 + 1));
 
-        ChatModemBlock CHAT_MODEM_CREATIVE = new ChatModemBlock(
+        CalibratedChatModemBlock CHAT_MODEM_CREATIVE = new CalibratedChatModemBlock(
             FabricBlockSettings.copyOf(net.minecraft.block.Blocks.BEDROCK)
         );
     }

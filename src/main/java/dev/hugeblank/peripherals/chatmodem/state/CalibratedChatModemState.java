@@ -5,7 +5,7 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dev.hugeblank.peripherals.chatmodem.ChatModemBlockEntity;
 import dev.hugeblank.peripherals.chatmodem.Constants;
 import dev.hugeblank.peripherals.chatmodem.IChatCatcher;
-import dev.hugeblank.peripherals.chatmodem.block.ChatModemBlock;
+import dev.hugeblank.peripherals.chatmodem.block.CalibratedChatModemBlock;
 import dev.hugeblank.util.BooleanRef;
 import dev.hugeblank.util.LuaPattern;
 import dev.hugeblank.util.PlayerInfo;
@@ -23,14 +23,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Set;
 
 
-public class BoundableChatModemState extends AbstractModemState implements IChatCatcher, IModemState {
+public class CalibratedChatModemState extends AbstractModemState implements IChatCatcher, IModemState {
     private final Set<String> captures = new ObjectArraySet<>();
     private boolean open;
     @Nullable
     private PlayerInfo playerInfo;
 
-    public BoundableChatModemState(ChatModemBlockEntity blockEntity) {
-        super(blockEntity, Constants.PeripheralMethods.simpleChatMethdos);
+    public CalibratedChatModemState(ChatModemBlockEntity blockEntity) {
+        super(blockEntity, Constants.PeripheralMethods.calibratedChatMethdos);
     }
 
 
@@ -140,8 +140,8 @@ public class BoundableChatModemState extends AbstractModemState implements IChat
 
     @Override
     public BlockState updateBlockState(BlockState state) {
-        return state.with(ChatModemBlock.ON, open)
-            .with(ChatModemBlock.PAIRED, isBound());
+        return state.with(CalibratedChatModemBlock.ON, open)
+            .with(CalibratedChatModemBlock.PAIRED, isBound());
     }
 
     @Override
