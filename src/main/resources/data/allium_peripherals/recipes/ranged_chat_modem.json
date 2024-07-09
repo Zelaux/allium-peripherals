@@ -7,14 +7,14 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:gold_ingot"
+      "tag": "c:stones"
     },
     "P": {
       "item": "computercraft:speaker"
     }
   },
   "result": {
-    "item": "allium_peripherals:chat_modem",
+    "item": "allium_peripherals:ranged_chat_modem",
     "count": 1
   }
 }
